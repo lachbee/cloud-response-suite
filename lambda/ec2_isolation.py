@@ -34,7 +34,7 @@ def lambda_handler(evt, ctx):
         logging.info(f'Revoking: {sg["GroupName"]} ({sg["GroupId"]})')
 
     # Generate a list of all security groups in the instance's VPC
-    vpc = ec2.Vpv(tgt.vpc_id)
+    vpc = ec2.Vpc(tgt.vpc_id)
     vpc_sg_query = ec2.security_groups.filter(
         Filters = [
             {'Name': 'vpc-id', 'Values': [tgt.vpc_id]},
